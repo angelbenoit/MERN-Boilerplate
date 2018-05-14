@@ -27,9 +27,9 @@ module.exports = function (passport) {
 					return done(err);
 				}
 
-				if (user) {
+				if (user) { // if user already exists
 					return done(null, user);
-				} else {
+				} else {// otherwise create a new user to the database
 					var newUser = new User();
 
 					newUser.github.id = profile.id;

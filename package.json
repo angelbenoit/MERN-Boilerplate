@@ -19,11 +19,16 @@
     "boilerplate"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Blake Johnston",
   "license": "MIT",
   "dependencies": {
+    "concurrent": "^0.3.2",
+    "concurrently": "^3.5.1",
     "dotenv": "^1.2.0",
     "express": "^4.12.4",
     "express-session": "^1.11.3",
