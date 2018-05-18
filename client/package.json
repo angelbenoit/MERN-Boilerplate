@@ -3,22 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/auth/github": {
-      "target": "http://localhost:8080"
+    "/auth/*": {
+      "target": "http://localhost:5000"
     },
-    "/api/*": {
-      "target": "http://localhost:8080"
+    "api": {
+      "target": "http://localhost:5000"
+    },
+    "/profile/": {
+      "target": "http://localhost:5000"
     }
   },
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "axios": "^0.17.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Login from './components/login';
+import Profile from './components/profile';
+import {BrowserRouter,Route} from 'react-router-dom';
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <a href="/auth/github">Login</a>
+        <BrowserRouter>
+          <div>
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/profile' component={Profile} />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
