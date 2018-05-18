@@ -7,7 +7,7 @@ class Profile extends React.Component {
         this.state = {profile:[]};
         axios.get('/api/current_user')
             .then((res) => {
-                this.setState({ profile:res.data });
+                this.setState({ profile: res.data });
                 console.log(this.state.profile);
             })
             .catch((err) => {
@@ -18,6 +18,7 @@ class Profile extends React.Component {
         if(this.state.profile.googleId){
         return ( 
             <div>
+                <h2>Hello <em>{this.state.profile.username}</em></h2>
                 <ul>
                     <li>GoogleID:{this.state.profile.googleId}</li>
                 </ul>
@@ -28,11 +29,7 @@ class Profile extends React.Component {
         else{
             return (
                 <div>
-                    <p>Dog</p>
-                    {/* <ul>
-                        <li>FacebookID:{this.state.profile.facebookId}</li>
-                    </ul>
-                    <a href="/api/logout">Logout</a> */}
+                    <p>Empty</p>
                 </div>
             )  
         }
