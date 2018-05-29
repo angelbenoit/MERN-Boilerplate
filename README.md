@@ -2,11 +2,14 @@
 
 <h4>
 Add this to config/keys.js
+```
 module.exports = {
     googleClientID:'',
     googleClientSecret:'',
     mongoURI:''
 }
+```
+
 </h4>
 
 <p>

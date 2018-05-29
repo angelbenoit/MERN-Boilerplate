@@ -1,39 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 class Profile extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {profile:[]};
-        axios.get('/api/current_user')
-            .then((res) => {
-                this.setState({ profile: res.data });
-                console.log(this.state.profile);
-            })
-            .catch((err) => {
-                console.log(err.response);
-            })
+    renderContent(){
+        console.log(this.props.auth);
+        switch (this.props.auth){
+            case null:
+                return;
+
+            case false:
+                return (
+                    <li><a href="/auth/google">Login with Google</a></li>
+                );
+            default:
+                return[
+                    <li key="2"><a href="/api/logout">Logout</a></li>
+                ]
+        }
     }
-    render() { 
-        if(this.state.profile.googleId){
+    render() {
         return ( 
             <div>
-                <h2>Hello <em>{this.state.profile.username}</em></h2>
-                <ul>
-                    <li>GoogleID:{this.state.profile.googleId}</li>
-                </ul>
-                <a href="/api/logout">Logout</a>
+                {
+                    this.props.auth ?
+                        <h1>Hello {this.props.auth.username}</h1> :
+                        <h1>Hello</h1>
+                }
+                {this.renderContent()}
             </div>
-         )
-        }
-        else{
-            return (
-                <div>
-                    <p>Empty</p>
-                </div>
-            )  
-        }
+         );
     }
 }
+
+function mapStateToProps(state){
+    return { auth: state.auth }
+}
  
-export default Profile;
+export default connect(mapStateToProps)(Profile);

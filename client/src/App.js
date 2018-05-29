@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import Login from './components/login';
 import Profile from './components/profile';
 import {BrowserRouter,Route} from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './Actions';
+
 class App extends Component {
+    componentDidMount() {
+        this.props.fetchUser();
+    }
+
   render() {
     return (
       <div className="App">
@@ -17,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, actions)(App);
