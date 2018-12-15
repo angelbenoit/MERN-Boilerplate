@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 class Profile extends React.Component {
     renderContent(){
@@ -20,7 +19,7 @@ class Profile extends React.Component {
         }
     }
     render() {
-        return ( 
+        return (
             <div>
                 {
                     this.props.auth ?
@@ -36,5 +35,5 @@ class Profile extends React.Component {
 function mapStateToProps(state){
     return { auth: state.auth }
 }
- 
+
 export default connect(mapStateToProps)(Profile);
