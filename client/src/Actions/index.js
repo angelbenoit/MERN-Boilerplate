@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, USER_DATA } from './types';
 
 export const signup = (formProps, callback) => async dispatch => {
   try {
@@ -39,3 +39,9 @@ export const signout = () => {
     payload: ''
   };
 };
+
+export const fetchUser = () => async dispatch => {
+  const response = await axios.get("http://localhost:5000/api/current_user", {headers: {authorization: localStorage.getItem("token")}});
+  console.log(response)
+  dispatch({ type: USER_DATA, payload: response.data});
+}
