@@ -4,12 +4,35 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Feature extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchUser();
   }
+
+  renderUser() {
+    if (this.props.userData) {
+      const user = this.props.userData;
+      return (
+        <>
+          <h3>{user.email}</h3>
+        </>
+      )
+    }
+  }
+
   render() {
-    return <div>This is the feature!</div>;
+    return (
+      <div>
+        This is the feature!
+        {this.renderUser()}
+      </div>
+    );
   }
 }
 
-export default connect(null, actions)(requireAuth(Feature));
+function mapStateToProps(state) {
+  return {
+    userData: state.userData
+  }
+}
+
+export default connect(mapStateToProps, actions)(requireAuth(Feature));
